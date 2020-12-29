@@ -1,0 +1,12 @@
+conn = pyodbc.connect(
+ r'DRIVER={ZappySys JSON Driver};'
+)
+cursor = conn.cursor() 
+ rows = cursor.execute("SELECT CustomerID,CompanyName FROM value 
+  WHERE COUNTRY='Germany' WITH 
+  (SRC='www.example.com/api/get/1?$format=json')") 
+with open(r'www.example.com/api/get/1', 'r', newline='') as csvfile:
+  writer = csv.writer(csvfile)
+  writer.writerow([x[0] for x in cursor.description]) 
+for row in rows:
+writer.writerow(row)
