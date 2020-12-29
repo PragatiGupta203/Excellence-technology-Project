@@ -1,0 +1,22 @@
+let item_list = [1,2,3,4,5,5,5,7,8,2,3,4,4,4,4,4];
+
+let unique_list = [];
+let duplicate_list = [];
+
+function check_insert_unique(item){
+  if(unique_list.includes(item)){
+    if(duplicate_list.indexOf(item) == -1){
+        duplicate_list.push(item)
+    }
+  } else {
+    if(unique_list.indexOf(item) == -1){
+        unique_list.push(item)
+    }
+  }
+}
+
+for(let i = 0; i < item_list.length; i++){
+  check_insert_unique(item_list[i]);
+}
+
+console.log('Duplicate items are ' + duplicate_list.join(','));
